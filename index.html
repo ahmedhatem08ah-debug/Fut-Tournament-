@@ -3,60 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>eFootball FUT Tournament with Verified Results</title>
+<title>FUT Tournament</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
 <style>
-:root{--bg:#0b1220;--card:#121a2b;--accent:#22c55e;--accent2:#3b82f6;--text:#e5e7eb}
-*{box-sizing:border-box}
-body{font-family:Poppins;background:radial-gradient(circle at top,#1e293b,#020617);color:var(--text);margin:0}
-.container{max-width:1100px;margin:auto;padding:20px}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.logo{font-size:28px;font-weight:700;letter-spacing:1px}
-.badge{background:var(--accent2);padding:6px 14px;border-radius:20px}
-.grid{display:grid;gap:20px}
+:root{
+    --bg-gradient: linear-gradient(135deg,#f093fb,#f5576c,#4facfe,#00f2fe);
+    --card:#ffffff20;
+    --accent:#ff6ec7;
+    --accent2:#3b82f6;
+    --text:#ffffff;
+    --shadow:rgba(0,0,0,0.3);
+}
+body{
+    font-family:Poppins;
+    background: var(--bg-gradient);
+    color: var(--text);
+    margin:0;
+    min-height:100vh;
+}
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+.logo{
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+.badge{
+    background:var(--accent2);
+    padding:6px 14px;
+    border-radius:20px;
+    font-weight:600;
+}
+.grid{
+    display:grid;
+    gap:25px;
+}
 @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
-.card{background:var(--card);padding:18px;border-radius:20px;box-shadow:0 0 20px rgba(0,0,0,.5);transition:.3s}
-.card:hover{transform:translateY(-5px)}
-input,select{padding:10px;border-radius:12px;border:none;width:100%;margin:5px 0;background:#020617;color:white}
-button{padding:10px;border:none;border-radius:12px;background:linear-gradient(135deg,#22c55e,#16a34a);color:white;font-weight:600;cursor:pointer;transition:.3s}
-button:hover{transform:scale(1.05)}
-.fut-card{background:#1f2937;border:2px solid var(--accent2);border-radius:15px;padding:10px;display:flex;align-items:center;gap:10px;margin-bottom:10px;transition:.3s}
-.fut-card:hover{transform:scale(1.03)}
-.team-logo{width:50px;height:50px;border-radius:50%;background:#334155;display:inline-flex;align-items:center;justify-content:center;overflow:hidden}
-.team-logo img{width:100%;height:100%;object-fit:cover}
-.group{background:#020617;padding:12px;border-radius:14px;margin-top:10px}
-.match{display:flex;justify-content:space-between;padding:8px;background:#020617;border-radius:12px;margin-top:5px}
-.table{width:100%;border-collapse:collapse;margin-top:10px}
-.table th,.table td{padding:6px;border-bottom:1px solid #334155;text-align:center}
-.fade{animation:fade .6s ease}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.success{color:#4ade80}.error{color:#f87171}
+.card{
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 20px var(--shadow);
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-5px);
+}
+input,select{
+    padding:12px;
+    border-radius:15px;
+    border:none;
+    width:100%;
+    margin:8px 0;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    font-weight:500;
+    outline:none;
+}
+input::placeholder, select::placeholder{
+    color:rgba(255,255,255,0.7);
+}
+button{
+    padding:12px;
+    border:none;
+    border-radius:15px;
+    background:linear-gradient(135deg,#ff6ec7,#3b82f6);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    width:100%;
+    transition:.3s;
+}
+button:hover{transform:scale(1.05);}
+.fut-card{
+    background:rgba(255,255,255,0.1);
+    border:2px solid var(--accent2);
+    border-radius:15px;
+    padding:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+    transition:.3s;
+}
+.fut-card:hover{transform:scale(1.03);}
+.team-logo{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#ffffff30;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+.team-logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.group{
+    background:rgba(0,0,0,0.15);
+    padding:12px;
+    border-radius:14px;
+    margin-top:10px;
+}
+.table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+.table th,.table td{
+    padding:8px;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    text-align:center;
+}
+.fade{
+    animation:fade .6s ease;
+}
+@keyframes fade{
+    from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}
+}
+.success{color:#4ade80;font-weight:600;}
+.error{color:#f87171;font-weight:600;}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
-<div class="logo">⚽ FUT Tournament UI</div>
-<div class="badge">LIVE</div>
+    <div class="logo">⚽ FUT Tournament</div>
+    <div class="badge">LIVE</div>
 </div>
 
 <div class="grid">
+<!-- Player Registration -->
 <div class="card fade">
 <h2>Register Player</h2>
-<input id="playerName" placeholder="Full Name">
+<input id="playerName" placeholder="Full Name (First + Last)">
 <input id="teamName" placeholder="Team Name">
 <input type="file" id="teamLogo" accept="image/*">
 <button onclick="registerPlayer()">Register</button>
 <p id="count"></p>
 </div>
 
+<!-- Groups -->
 <div class="card fade">
 <h2>Groups</h2>
 <button onclick="generateGroups()">Generate Groups</button>
 <div id="groups"></div>
 </div>
 
+<!-- Submit Match Result -->
 <div class="card fade">
 <h2>Submit Result</h2>
 <select id="team1"></select>
@@ -69,111 +177,155 @@ button:hover{transform:scale(1.05)}
 <p id="resultStatus"></p>
 </div>
 
+<!-- Standings -->
 <div class="card fade">
 <h2>Standings</h2>
 <div id="tables"></div>
 </div>
 
+<!-- Knockout -->
 <div class="card fade">
 <h2>Knockout</h2>
 <button onclick="startKnockout()">Generate</button>
 <div id="knockout"></div>
 </div>
+
 </div>
 </div>
 
 <script>
-let players=[],teams={},logos={},groups=[],standings={},matchProofs={};
+let players=[], teams={}, logos={}, groups=[], standings={}, matchProofs={};
 
 function registerPlayer(){
- let name=playerName.value.trim();
- let team=teamName.value.trim();
- let logoFile=document.getElementById('teamLogo').files[0];
- if(!name||!team){alert("Enter data");return}
- if(name.split(" ").length<2){alert("Enter full name");return}
- if(players.some(p=>p.toLowerCase()==name.toLowerCase())){alert("Player exists");return}
- if(!teams[team]){teams[team]=[];standings[team]={points:0,goals:0}}
- if(teams[team].length>=2){alert("❌ Team already has 2 players");return}
- players.push(name);
- teams[team].push(name);
- if(logoFile){logos[team]=URL.createObjectURL(logoFile)}
- count.innerText=players.length+"/64";
- updateDropdowns();
+    let name = document.getElementById('playerName').value.trim();
+    let team = document.getElementById('teamName').value.trim();
+    let logoFile = document.getElementById('teamLogo').files[0];
+    if(!name || !team) return alert("Enter all fields!");
+    if(name.split(" ").length < 2) return alert("Enter full name (first + last)");
+    if(players.some(p => p.toLowerCase() === name.toLowerCase())) return alert("Player already exists!");
+    if(!teams[team]) teams[team]=[];
+    if(teams[team].length >= 2) return alert("Team already has 2 players!");
+    players.push(name);
+    teams[team].push(name);
+    if(logoFile) logos[team] = URL.createObjectURL(logoFile);
+    if(!standings[team]) standings[team]={points:0, goals:0, played:0, wins:0, draws:0, losses:0};
+    document.getElementById('count').innerText = players.length + "/64 players";
+    updateDropdowns();
 }
 
-function shuffle(a){return a.sort(()=>Math.random()-0.5)}
+function updateDropdowns(){
+    const t1 = document.getElementById('team1');
+    const t2 = document.getElementById('team2');
+    t1.innerHTML = t2.innerHTML = "";
+    Object.keys(teams).forEach(team=>{
+        t1.innerHTML += `<option>${team}</option>`;
+        t2.innerHTML += `<option>${team}</option>`;
+    });
+}
+
+function shuffle(a){return a.sort(()=>Math.random()-0.5);}
 
 function generateGroups(){
- let t=shuffle(Object.keys(teams)); groups=[];
- for(let i=0;i<t.length;i+=4){groups.push(t.slice(i,i+4))}
- let html="";
- groups.forEach((g,i)=>{
- html+=`<div class='group fade'><b>Group ${String.fromCharCode(65+i)}</b>`;
- g.forEach(t=>{
- let logoHTML=logos[t]?`<img src='${logos[t]}'>`:'⚽';
- html+=`<div class='fut-card'><div class='team-logo'>${logoHTML}</div>${t}</div>`;
- });
- html+="</div>";
- });
- groupsDiv.innerHTML=html;
+    const teamNames = Object.keys(teams);
+    if(teamNames.length === 0) return alert("No teams registered!");
+    const shuffled = shuffle([...teamNames]);
+    groups = [];
+    for(let i=0; i<shuffled.length; i+=4){
+        groups.push(shuffled.slice(i,i+4));
+    }
+    let html="";
+    groups.forEach((g,i)=>{
+        html+=`<div class='group fade'><b>Group ${String.fromCharCode(65+i)}</b>`;
+        g.forEach(t=>{
+            let logoHTML = logos[t]?`<img src='${logos[t]}'>`:'⚽';
+            html+=`<div class='fut-card'><div class='team-logo'>${logoHTML}</div>${t}</div>`;
+        });
+        html+="</div>";
+    });
+    document.getElementById('groups').innerHTML = html;
+    updateTables();
 }
 
-function updateDropdowns(){team1.innerHTML="";team2.innerHTML="";
- Object.keys(teams).forEach(t=>{
- team1.innerHTML+=`<option>${t}</option>`;
- team2.innerHTML+=`<option>${t}</option>`;
- });}
-
 async function submitResult(){
- let t1=team1.value,t2=team2.value;
- let s1=+score1.value,s2=+score2.value;
- let file1=img1.files[0], file2=img2.files[0];
- if(!file1 || !file2){resultStatus.innerHTML="<span class='error'>Upload both proof images</span>"; return;}
+    let t1 = document.getElementById('team1').value;
+    let t2 = document.getElementById('team2').value;
+    let s1 = +document.getElementById('score1').value;
+    let s2 = +document.getElementById('score2').value;
+    let f1 = document.getElementById('img1').files[0];
+    let f2 = document.getElementById('img2').files[0];
+    const statusEl = document.getElementById('resultStatus');
 
- // Prevent overwriting proofs
- if(matchProofs[t1+"-"+t2] && matchProofs[t1+"-"+t2].submitted){
-   resultStatus.innerHTML="<span class='error'>Result already submitted for this match</span>";
-   return;
- }
+    if(!f1 || !f2){
+        return statusEl.innerHTML="<span class='error'>Both teams must upload proof images!</span>";
+    }
 
- // OCR for verification
- let text1=await Tesseract.recognize(file1,'eng').then(r=>r.data.text);
- let text2=await Tesseract.recognize(file2,'eng').then(r=>r.data.text);
- 
- // Simple authentication check: team names + scores must appear
- if(!text1.includes(t1) || !text1.includes(s1) || !text2.includes(t2) || !text2.includes(s2)){
-   resultStatus.innerHTML="<span class='error'>Photos don't match submitted data. Please add real result!</span>";
-   return;
- }
+    if(matchProofs[t1+"-"+t2]?.proof1Submitted){
+        return statusEl.innerHTML="<span class='error'>Team 1 has already submitted!</span>";
+    }
+    if(matchProofs[t1+"-"+t2]?.proof2Submitted){
+        return statusEl.innerHTML="<span class='error'>Team 2 has already submitted!</span>";
+    }
 
- standings[t1].goals+=s1;
- standings[t2].goals+=s2;
- if(s1>s2) standings[t1].points+=3;
- else if(s2>s1) standings[t2].points+=3;
- else { standings[t1].points++; standings[t2].points++; }
+    statusEl.innerHTML="⏳ Verifying images...";
 
- matchProofs[t1+"-"+t2] = {submitted:true, proof1:file1, proof2:file2};
- updateTables();
- resultStatus.innerHTML="<span class='success'>Result verified and saved ✔</span>";
+    try{
+        let text1 = await Tesseract.recognize(f1,'eng').then(r=>r.data.text);
+        let text2 = await Tesseract.recognize(f2,'eng').then(r=>r.data.text);
+
+        if(!text1.toLowerCase().includes(t1.toLowerCase()) || !text1.includes(s1)){
+            return statusEl.innerHTML="<span class='error'>Team 1 image unclear, resubmit!</span>";
+        }
+        if(!text2.toLowerCase().includes(t2.toLowerCase()) || !text2.includes(s2)){
+            return statusEl.innerHTML="<span class='error'>Team 2 image unclear, resubmit!</span>";
+        }
+
+        if(!matchProofs[t1+"-"+t2]) matchProofs[t1+"-"+t2]={};
+        matchProofs[t1+"-"+t2].proof1Submitted=true;
+        matchProofs[t1+"-"+t2].proof2Submitted=true;
+
+        updateStandings(t1,t2,s1,s2);
+        statusEl.innerHTML="<span class='success'>✅ Result verified and accepted!</span>";
+        updateTables();
+    } catch(err){
+        statusEl.innerHTML="<span class='error'>OCR failed. Please upload a clear image!</span>";
+        console.error(err);
+    }
+}
+
+function updateStandings(t1,t2,s1,s2){
+    let a=standings[t1],b=standings[t2];
+    a.goals+=s1; b.goals+=s2; a.played++; b.played++;
+    if(s1>s2){a.points+=3;a.wins++;b.losses++;}
+    else if(s2>s1){b.points+=3;b.wins++;a.losses++;}
+    else {a.points++;b.points++;a.draws++;b.draws++;}
 }
 
 function updateTables(){
- let html="";
- groups.forEach((g,i)=>{
- let sorted=g.sort((a,b)=>standings[b].points-standings[a].points||standings[b].goals-standings[a].goals);
- html+=`<h3>Group ${String.fromCharCode(65+i)}</h3>`;
- html+="<table class='table'><tr><th>Team</th><th>Pts</th><th>Goals</th></tr>";
- sorted.forEach(t=>{let s=standings[t];html+=`<tr><td>${t}</td><td>${s.points}</td><td>${s.goals}</td></tr>`});
- html+="</table>";
- });
- tables.innerHTML=html;
+    let html="";
+    groups.forEach((g,i)=>{
+        let sorted=[...g].sort((a,b)=>{
+            if(standings[b].points!==standings[a].points) return standings[b].points-standings[a].points;
+            return standings[b].goals-standings[a].goals;
+        });
+        html+=`<h3>Group ${String.fromCharCode(65+i)}</h3>`;
+        html+="<table class='table'><tr><th>Team</th><th>Pts</th><th>Goals</th><th>W</th><th>D</th><th>L</th></tr>";
+        sorted.forEach(t=>{
+            let s=standings[t];
+            html+=`<tr><td>${t}</td><td>${s.points}</td><td>${s.goals}</td><td>${s.wins}</td><td>${s.draws}</td><td>${s.losses}</td></tr>`;
+        });
+        html+="</table>";
+    });
+    document.getElementById('tables').innerHTML=html;
 }
 
 function startKnockout(){
- let q=[];groups.forEach(g=>{let s=g.sort((a,b)=>standings[b].points-standings[a].points);q.push(s[0],s[1])});
- knockout.innerHTML=q.map(t=>`<div class='match'>🏆 ${t}</div>`).join("");
+    let q=[];
+    groups.forEach(g=>{
+        let sorted=[...g].sort((a,b)=>standings[b].points-standings[a].points);
+        q.push(sorted[0],sorted[1]);
+    });
+    document.getElementById('knockout').innerHTML=q.map(t=>`<div class='match fut-card'>🏆 ${t}</div>`).join("");
 }
 </script>
-
 </body>
 </html>
